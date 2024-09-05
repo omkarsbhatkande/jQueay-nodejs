@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+
+$(document).ready(function() {
+      $("#color").each(function() {
+        document.write("Using id selector.");
+      });
+
+      $("div").each(function() {
+        document.write(" Using element selector.");
+      });
+
+      $(".hero").each(function() {
+        document.write(" Using class selector.");
+      });
+    });
+
+//     $(document).ready(function(){
+//   $("button").click(function(){
+//     $("div").hide();
+//   });
+// });
+  </script>
+</head>
+<body>
+
+  <!-- there are 3 types of selector elements, id , class -->
+<!-- 1 element selector -->
+ <div>abc</div>
+
+<!-- id selector -->
+  <h4 id="#color">6</h4>
+
+<!-- class selector -->
+  <div class="hero">
+    <p>hello</p>
+  </div>
+
+<button>i am button</button>
+</body>
+</html>
