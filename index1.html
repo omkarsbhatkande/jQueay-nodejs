@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  
+  <script>
+    // $(document).ready (function(){
+    //   document.write("hello i am learning jQuary");
+    // })
+
+    $("h2").ready(function(){
+      document.write("successfully manupulatation done ")
+    })
+
+    $("#color").ready(function(){
+      document.write("using id selector");
+    })
+
+    $("div").ready(function(){
+      document.write("using element selector");
+    })
+
+    $(".hero").ready(function(){
+      document.write("using class selector")
+    })
+
+
+  </script>
+</head>
+<body>
+ <h1>world</h1>
+<!-- $() elector start with this and in that we add elemnts whichever we want manipultate -->
+
+<!--  first try h2 manupulation -->
+  <h2>
+    abc
+  </h2>
+
+  <!-- there are 3 types of selector elements, id , class -->
+<!-- 1 element selector -->
+ <div>abc</div>
+
+<!-- id selector -->
+  <h4 id="#color"></h4>
+
+<!-- class selector -->
+  <div class="hero"></div>
+
+
+</body>
+</html>
