@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $("h2").click(function(){
+        $("P").toggle();
+      })
+      $("#toggleParagraph").click(function() {
+        $("p").toggle();
+      });
+      $("#toggleDiv").click(function() {
+        $("div").toggle();
+      });
+    })
+
+  </script>
+
+
+</head>
+<body>
+
+  <h1>jQuery</h1>
+  <h2>toggle text</h2>
+  <p>demo text</p>
+
+  <p>This is a paragraph.</p>
+  <button id="toggleParagraph">Toggle Paragraph</button>
+
+  <div>This is a div.</div>
+  <button id="toggleDiv">Toggle Div</button>
+  
+
+
+</body>
+</html>
