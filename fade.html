@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+  <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $("#id1").fadeIn();
+        $("#id2").fadeIn("slow");
+        $("#id3").fadeIn(2000);
+        $("#id4").fadeIn("fast");
+      });
+    });
+  </script>
+
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      padding: 20px;
+      border: 1px solid yellow;
+      display: none;
+    }
+    #id1,#id2 ,#id3,#id4{
+      background-color: blue;
+    }
+  </style>
+
+
+</head>
+<body>
+
+  <div id="id1">
+    div1
+  </div>
+  <div id="id2">
+    div2
+  </div>
+  <div id="id3">
+    div3
+  </div>
+  <div id="id4">
+    div4
+  </div>
+
+
+  <button>Fade In And display invisible elements</button>
+</body>
+</html>
