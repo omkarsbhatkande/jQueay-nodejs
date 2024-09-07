@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $("button").click(()=>{
+        $(".div1").fadeToggle();
+        $(".div2").fadeToggle("slow");
+        $(".div3").fadeToggle("fast");
+      })
+    })
+
+  </script>
+
+
+</head>
+<body>
+
+
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      display: flex;
+      margin: 30px;
+      background: red;
+    }
+  </style>
+ 
+  <div class="div1"></div>
+  <div class="div2"></div>
+  <div class="div3"></div>
+
+<button>fade Toggle effects</button>
+</body>
+</html>
