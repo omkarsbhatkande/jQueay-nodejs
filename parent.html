@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(()=>{
+      $("span").parent().css({"background" : "pink", "color":"blue" , "border" :"2px solid green"});
+    });
+  </script>
+
+</head>
+
+<style>
+  .ancestor * {
+    display: block;
+    border: 2px solid black;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+  }
+</style>
+
+<body>
+  <div class="ancestor">
+    <div>Ggparent
+      <ul>gparent
+        <li>parent
+          <span>span1</span>
+          <span>span2</span>
+        </li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
