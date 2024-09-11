@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+     $("#btn1").click(()=>{
+      alert($("#ename").val());
+     
+     });
+
+     $("#btn2").click(()=>{
+      alert($("#ezone" ).val());
+     
+     });
+
+
+    });
+
+  </script>
+
+<style>
+  #demo{
+    background: black;
+    font-size: 22px;
+    color: aliceblue;
+  }
+
+
+</style>
+
+
+</head>
+<body>
+  <h2>Employee Details</h2>
+
+<form>
+  <p>Employye Name : <input type="text" id="ename" value="amit diwan" ></p>
+<p>Employye Dept : <input type="text" id="edept" value="tech" ></p>
+<p>Employye Zone : <input type="text" id="ezone" value="north" ></p>
+
+<button id="btn1">get employee name </button>
+
+<button id="btn2">get dept and zone</button>
+</form>
+
+
+
+
+
+</body>
+</html>

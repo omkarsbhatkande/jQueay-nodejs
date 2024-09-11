@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+     $("#btn1").click(()=>{
+      alert($("#demo").text());
+     
+     });
+
+     $("#btn2").click(()=>{
+      alert($("#demo").html());
+     
+     });
+
+
+    });
+
+  </script>
+
+<style>
+  #demo{
+    background: black;
+    font-size: 22px;
+    color: aliceblue;
+  }
+
+
+</style>
+
+
+</head>
+<body>
+
+<p id="demo">this is a  <em>demo text</em> this is another <strong>demo text</strong></p>
+
+<p>click the below button to see the html content in the paragraph.</p>
+
+<button id="btn1">get text</button>
+
+<button id="btn2">get html</button>
+
+
+
+
+
+</body>
+</html>
