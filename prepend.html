@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $("#btn").click(()=>{
+        $("h1").prepend("hii i am appended by clicking button i am back wow")
+      })
+
+
+    });
+
+  </script>
+
+<!-- <style>
+  h1{
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+  }
+</style> -->
+
+
+</head>
+<body>
+  <p>he will apeend a word in the above heading</p>
+  <p>click button to prepend</p>
+
+  <h1>  hwy  </h1>
+
+
+  <button id="btn">prepend</button>
+
+
+
+
+
+</body>
+</html>
