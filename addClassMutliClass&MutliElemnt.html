@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+     $("button").click(function(){
+      $("h2, p").addClass("demo example");
+     })
+
+
+    });
+
+  </script>
+
+
+<style>
+  .demo{
+    background: blue;
+    color: yellow;
+  }
+
+  .example{
+    width: 200px;
+    height: 100px;
+    border: 2px dashed red;
+  }
+</style>
+
+
+
+
+</head>
+<body>
+ 
+<p>This is a demo text</p>
+
+<h2>this is another demo text </h2>
+
+
+
+<button>Add as mutliple class</button>
+
+
+
+
+</body>
+</html>
