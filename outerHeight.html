@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+     $("button").click(function(){
+      let txt = "";
+      txt += "outer Height ="+$(".demo").outerHeight();
+      $(".demo").html(txt);
+
+      // let txt =$(".demo").width();
+      // $(".demo").outerHeight(txt);
+     })
+
+
+    });
+
+  </script>
+
+
+<style>
+.demo{
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+  padding: 15px;
+  margin: 12px;
+  border: 1px solid yellow;
+}
+</style>
+
+
+
+
+</head>
+<body>
+
+  <h2>get the outerHeight</h2>
+
+  <div class="demo"></div>
+
+
+  <button>get the outerHeight</button>
+ 
+
+
+
+
+
+</body>
+</html>
