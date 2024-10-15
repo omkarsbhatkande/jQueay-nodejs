@@ -1,10 +1,17 @@
 const express = require("express");
 
+const fs = require("fs");
+
 const users = require("./MOCK_DATA.json");
+
 
 const app = express();
 
 const PORT = 3000;
+
+
+//middleware : plugin
+app.use(express.urlencoded({extended:false}))
 
 //Routes
 app.get("/users",(req,res)=>{
@@ -42,14 +49,40 @@ app.route("/api/users/:id").get((req,res)=>{
   const user = users.find((user)=>user.id === id);
   return res.json(user);
 }).patch((req,res)=>{
-  return  res.json({status:"pending"});
+  const found = users.find((item)=>{return item.id === parseInt(req.params.id)});
+  if(found){
+    if(req.body.first_name){
+      found.first_name=req.body.first_name
+    }
+    if(req.body.last_name){
+      found.last_name=req.body.last_name
+    }
+    if(req.body.email){
+      found.email=req.body.email
+    }
+    if(req.body.gender){
+      found.gender=req.body.gender
+    }
+    if(req.body.job_title){
+      found.job_title=req.body.job_title
+    }
+    fs.writeFile("./MOCK_DATA.json",JSON.stringify(users),(err,data)=>{return  res.json({status:"success",});})
+  }
+  //console.log(body);
+  
+  return  res.json({status:"pending",users});
 })
 .delete((req,res)=>{
   return  res.json({status:"pending"});
 })
 
 app.post("/api/users/",(req,res)=>{
-  return  res.json({status:"pending"});
+  const body = req.body;
+  users.push({...body, id: users.length + 1});
+  fs.writeFile("./MOCK_DATA.json",JSON.stringify(users),(err,data)=>{return  res.json({status:"success", id:users.length});})
+  //console.log(body);
+  
+  
 });
 
 
