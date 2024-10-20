@@ -1,14 +1,52 @@
 const express = require("express");
-
-
 const fs = require("fs");
-
+const mongoose = require("mongoose");
 const users = require("./MOCK_DATA.json");
+const { type } = require("os");
 
 
 const app = express();
-
 const PORT = 3000;
+
+//connection
+
+mongoose.connect("mongodb://localhost:27017/youtube-app-1")
+.then(()=>{
+  console.log("MongooseDB Connected");
+})
+.catch((err)=>{
+  console.log("Error" ,err);
+  
+})
+
+// schema
+const userSchema = new mongoose.Schema({
+
+  firstName:{
+    type:String,
+    required : true
+  },
+  lastName:{
+    type:String,
+    required : true
+  },
+  email:{
+    type:String,
+    required : true,
+    unique:true
+  },
+  jobTitle:{
+    type:String
+  },
+  gender:{
+    type:String
+  }
+
+},{timestamps:true})
+
+const User = mongoose.model("user" ,userSchema);
+
+
 
 
 //middleware : plugin
@@ -30,6 +68,7 @@ app.listen(PORT,(req,res)=>{
 
 //REST API
 app.get("/api/users",(req,res)=>{
+  res.setHeader("x-name" ,"omkar B")
   return res.json(users);
 })
 
@@ -41,8 +80,6 @@ app.get("/api/users",(req,res)=>{
 // app.delete("/api/users/:id",(req,res)=>{
 //   return  res.json({status:"pending"});
 // });
-
-
 
 
 app.route("/api/users/:id").get((req,res)=>{
@@ -77,12 +114,33 @@ app.route("/api/users/:id").get((req,res)=>{
   return  res.json({status:"pending"});
 })
 
-app.post("/api/users/",(req,res)=>{
+app.post("/api/users/",async (req,res)=>{
   const body = req.body;
-  users.push({...body, id: users.length + 1});
-  fs.writeFile("./MOCK_DATA.json",JSON.stringify(users),(err,data)=>{return  res.json({status:"success", id:users.length});})
+  if (
+    !body ||
+    !body.first_name ||
+    !body.last_name ||
+    !body.email ||
+    !body.gender ||
+    !body.job_title
+  ) {
+    return res.status(400).json({ msg: "All fields are required" });
+  }
+
+ const result =  await User.create({
+    firstName : body.first_name,
+    lastName : body.last_name,
+    email : body.email,
+    gender: body.gender,
+    jobTitle: body.job_title
+  })
+
+  return res.status(200).json({msg : "data successfully added"})
+
+
+  // users.push({...body, id: users.length + 1});
+  // fs.writeFile("./MOCK_DATA.json",JSON.stringify(users),(err,data)=>{return  res.json({status:"success", id:users.length});})
   //console.log(body);
-  
   
 });
 
