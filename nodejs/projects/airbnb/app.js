@@ -4,10 +4,14 @@ const path = require("path");
 const express = require("express");
 
 const userRouter = require("./routes/userRouter");
-const hostRouter = require("./routes/hostRouter");
+const {hostRouter} = require("./routes/hostRouter");
 const rootDir = require("./utils/PathUtil")
 
 const app = express();
+
+// Ejs pakage
+app.set('view engine' , 'ejs');
+app.set('views' , 'views')
 
 app.use(express.urlencoded({ extended: false }));
 app.use(userRouter);
@@ -17,7 +21,7 @@ app.use(express.static(path.join(rootDir,"public")))
 
 app.use((req,res,next)=>{
   //res.status(404);
-  res.sendFile(path.join(rootDir,"views","/404.html")) 
+  res.render('404',{pageTitle:'page not found'}) 
 })
 
 const PORT = 3000;
