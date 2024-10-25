@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>home</title>
+</head>
+
+<style>
+  h1{
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    background-color: aquamarine;
+  }
+</style>
+<body>
+  <div class="container">
+    <h1>Shortener Url Project</h1>
+    <div>
+      <form action="/url" method="post">
+        <label for="">Please Enter Url</label>
+        <input type="text" name="url" placeholder="https://example.com">
+        <button type="submit">Generate</button>
+      </form>
+    </div>
+    <div>
+      <% if (locals.urls) { %>
+        <%= console.log(urls);
+         %>
+       <table>
+        <thead>
+          <th>S.No</th>
+          <th>ShortId</th>
+          <th>RediectId</th>
+          <th>Clicks</th>
+        </thead>
+        <tbody>
+         <% urls.forEach((url ,index) => { %>
+          <td><%= index + 1 %></td>
+          <td><%= url.ShortId %></td>
+          <td><%=  url.redirectURL%></td>
+          <td><%= url.visitHistory.length %></td>
+         <% }) %> 
+        </tbody>
+       </table>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
