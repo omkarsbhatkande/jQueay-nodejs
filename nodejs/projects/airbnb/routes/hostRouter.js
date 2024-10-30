@@ -10,14 +10,14 @@ const rootDir = require("../utils/PathUtil")
 
 // Route to serve the add-home page
 hostRouter.get("/add-home", (req, res, next) => {
-  res.render('addHome', {pageTitle:'Add-home'}); 
+  res.render('addHome', {pageTitle:'Add-home',currentPage:'addHome'}); 
 });
 const registeredHomes = [];
 
 hostRouter.post("/add-home",(req,res,next)=>{
   //console.log(req.body.houseName);
-  registeredHomes.push({houseName:req.body.houseName});
-  res.render('homeAdded',{pageTitle:'Home Added'}) 
+  registeredHomes.push(req.body);
+  res.render('homeAdded',{pageTitle:'Home Added',currentPage:'homeAdded'}) 
 });
 
 
