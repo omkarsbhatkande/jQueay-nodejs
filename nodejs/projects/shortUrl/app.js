@@ -1,16 +1,20 @@
 //External module
 const express =require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser')
 
 //app 
 const app = express();
 
 // local modules
 const URL = require('./models/url')
-const urlRouter = require('./routes/url');
-const connectToMongoose= require('./connect');
-const staticRoutes = require('./routes/staticRouter')
 
+
+const urlRouter = require('./routes/url');
+const staticRoutes = require('./routes/staticRouter')
+const userRoute = require('./routes/user')
+const connectToMongoose= require('./connect');
+const {restBreakToLoggedinUserOnly , checkAuth} = require('./middlewares/auth')
 //ejs support
 app.set('view engine','ejs');
 app.set('views' ,path.resolve('./views'));
@@ -24,6 +28,7 @@ app.listen(PORT,(req,res)=>{
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
+app.use(cookieParser())
 
 // connection
 connectToMongoose('mongodb://localhost:27017/short-url')
@@ -31,18 +36,19 @@ connectToMongoose('mongodb://localhost:27017/short-url')
 
 
 // Routes
-app.use('/url' , urlRouter);
-
-app.get('/test',async(req,res)=>{
-  const allUrls = await URL.find({})
-  //console.log(allUrls);
-  
-  return res.render('home',{title:'Home page',urls:allUrls})
-})
+app.use('/url' ,restBreakToLoggedinUserOnly, urlRouter);
+app.use('/user' , userRoute);
+app.use('/',checkAuth,staticRoutes)
 
 
-app.use('/',staticRoutes)
 
+
+
+// app.get('/test',async(req,res)=>{
+//   const allUrls = await URL.find({})
+//   //console.log(allUrls);  
+//   return res.render('home',{title:'Home page',urls:allUrls})
+// })
 
 
 

@@ -26,26 +26,30 @@
     </div>
     <div>
       <% if (locals.urls) { %>
-        <%= console.log(urls);
-         %>
-       <table>
-        <thead>
-          <th>S.No</th>
-          <th>ShortId</th>
-          <th>RediectId</th>
-          <th>Clicks</th>
-        </thead>
-        <tbody>
-         <% urls.forEach((url ,index) => { %>
-          <td><%= index + 1 %></td>
-          <td><%= url.ShortId %></td>
-          <td><%=  url.redirectURL%></td>
-          <td><%= url.visitHistory.length %></td>
-         <% }) %> 
-        </tbody>
-       </table>
+        <%= console.log(urls); %>
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>ShortId</th>
+              <th>RedirectId</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% urls.forEach((url, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= url.shortId %></td>
+                <td><%= url.redirectURL %></td>
+                <td><%= url.visitHistory.length %></td>
+              </tr>
+            <% }) %> 
+          </tbody>
+        </table>
       <% } %>
     </div>
+    
   </div>
 </body>
 </html>
