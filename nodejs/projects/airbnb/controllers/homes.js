@@ -4,7 +4,7 @@ exports.getAddHome = (req, res, next) => {
 }
 
 exports.postAddHome = (req,res,next)=>{
-  console.log(req.body);
+  //console.log(req.body);
   const {houseName , price,location,rating,imageUrl} = req.body;
   const home = new Home(houseName , price,location,rating,imageUrl) 
   home.save();
@@ -15,7 +15,7 @@ exports.postAddHome = (req,res,next)=>{
 
 exports.getHomes = (req,res,next)=>{
   const registeredHomes = Home.fetchAll();
-  console.log(registeredHomes);
+ // console.log(registeredHomes);
   res.render('home',{registeredHomes:registeredHomes,pageTitle:'airbnb Home',currentPage:'Home'}) 
 }
 

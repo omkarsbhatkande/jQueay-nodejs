@@ -1,3 +1,9 @@
+//core module
+const fs = require('fs')
+const path = require('path')
+
+const rootDir = require('../utils/PathUtil')
+
 const registeredHomes = [];
 
 module.exports = class Home{
@@ -10,6 +16,7 @@ module.exports = class Home{
   }
   save(){
     registeredHomes.push(this);
+   const homeDataPath =  path.join
   }
 
   static fetchAll(){
