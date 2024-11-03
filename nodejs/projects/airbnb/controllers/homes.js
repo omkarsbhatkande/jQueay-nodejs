@@ -1,6 +1,6 @@
 const Home = require("../models/home");
 exports.getAddHome = (req, res, next) => {
-  res.render("addHome", { pageTitle: "Add-home", currentPage: "addHome" });
+  res.render("host/addHome", { pageTitle: "Add-home", currentPage: "addHome" });
 };
 
 exports.postAddHome = (req, res, next) => {
@@ -10,7 +10,7 @@ exports.postAddHome = (req, res, next) => {
   home.save();
 
   //registeredHomes.push(req.body);
-  res.render("homeAdded", {
+  res.render("host/home-added", {
     pageTitle: "Home Added",
     currentPage: "homeAdded",
   });
@@ -18,7 +18,7 @@ exports.postAddHome = (req, res, next) => {
 
 exports.getHomes = (req, res, next) => {
    Home.fetchAll((registeredHomes) =>
-    res.render("home", {
+    res.render("store/home-list", {
       registeredHomes: registeredHomes,
       pageTitle: "airbnb Home",
       currentPage: "Home",

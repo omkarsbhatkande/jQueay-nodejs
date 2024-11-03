@@ -3,12 +3,12 @@
 
 //External module
 const express = require("express");
-const userRouter = express.Router();
+const storeRouter = express.Router();
 //const rootDir = require("../utils/PathUtil");
 // const { registeredHomes } = require("./hostRouter");
 const homeController = require('../controllers/homes')
 
 
-userRouter.get("/",homeController.getHomes);
+storeRouter.get("/",homeController.getHomes);
 
-module.exports = userRouter;
+module.exports = storeRouter;
