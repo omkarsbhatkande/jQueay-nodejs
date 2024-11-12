@@ -2,7 +2,7 @@ const express = require("express");
 const hostRouter = express.Router();
 
 // local modules
-const homeController = require('../controllers/homes')
+const homeController = require('../controllers/storeController')
 
 
 // Route to serve the add-home page
