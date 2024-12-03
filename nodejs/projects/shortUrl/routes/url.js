@@ -6,7 +6,7 @@ const {handleGenerateShortUrl,handleGetAnalytics} =require('../controllers/url')
 
 router.post('/', handleGenerateShortUrl);
 
-router.use('/analytics',handleGetAnalytics)
+router.get('/analytics/:shortId',handleGetAnalytics)
 
 
 module.exports =router;

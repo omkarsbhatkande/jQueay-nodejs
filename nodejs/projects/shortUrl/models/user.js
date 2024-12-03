@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema(
     password:{
       type:String,
       required:true
+    },
+    visitHistory:[{timeStamps:{type:Number}}],
+    createdBy:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'users',
     }
 },
 {timeStamps:true}

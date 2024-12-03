@@ -54,13 +54,17 @@ app.use('/',checkAuth,staticRoutes)
 
 app.get('/:shortId' ,async (req,res)=>{
   const shortId = req.params.shortId;
-  const entry = await URL.findOneAndUpdate({
+  const entry = await URL.findOneAndUpdate(
+    {
     shortId
-  },{$push:{
+  }
+  ,{
+    $push:{
     visitHistory:{
       timeStamps:Date.now()
     },
-  }})
-  //res.redirect(entry.redirectURL)
+  }
+})
+  res.redirect(entry.redirectURL)
 })
 
