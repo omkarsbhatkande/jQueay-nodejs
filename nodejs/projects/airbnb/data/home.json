@@ -1,1 +1,1 @@
-[{"houseName":"Fish banglo","price":"1000000","location":"Bengaluru","rating":"5 star"},{"houseName":"raju bhai ka ghar","price":"999","location":"Bengaluru","rating":"5 star"}]
+[{"id":"1","houseName":"Fish banglo","price":"1000000","location":"Bengaluru","rating":"5 star"},{"id":"2","houseName":"raju bhai ka ghar","price":"999","location":"Bengaluru","rating":"5 star"},{"houseName":"summer home","price":"999","location":"goa","rating":"5 star"},{"houseName":"water house","price":"1999","location":"tripura","rating":"5 star","id":"0.8381158559411115"}]

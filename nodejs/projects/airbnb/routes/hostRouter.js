@@ -5,9 +5,14 @@ const hostRouter = express.Router();
 const hostController = require('../controllers/hostController')
 
 
+
+
+
 // Route to serve the add-home page
 hostRouter.get("/add-home", hostController.getAddHome);
 hostRouter.post("/add-home",hostController.postAddHome);
+hostRouter.get("/host-home-list" , hostController.getHostHomes)
+
 
 
 

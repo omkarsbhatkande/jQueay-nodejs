@@ -6,11 +6,12 @@
       </div>
       <!-- Navigation -->
       <nav class="space-x-4">
-        <a href="/" class="<%= currentPage === 'home'?'bg-red':'underline' %> hover:underline">Home</a>
-        <a href="../store/bookings.ejs" class="hover:underline">Bookings</a>
+        <a href="/" class="<%= currentPage === 'index'?'bg-red':'underline' %> hover:underline">airbnb</a>
+        <a href="/homes" class="<%= currentPage === 'home'?'bg-red':'underline' %> hover:underline">Homes-List</a>
+        <a href="/favourites" class="<%= currentPage === 'favourites'?'bg-red':'underline' %> hover:underline">Favourites List</a>
+        <a href="/bookings" class="<%= currentPage === 'bookings'?'bg-red':'underline' %> hover:underline">Bookings</a>
+        <a href="/host/host-home-list" class="<%= currentPage === 'Host-homes'?'bg-red-400':'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300">Host Homes</a>
           <a href="/host/add-home" class="hover:underline">Add Home</a>
-          <a href="/about" class="hover:underline">About</a>
-          <a href="/services" class="hover:underline">Services</a>
       </nav>
       <!-- Dropdown -->
       <div class="relative">
