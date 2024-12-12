@@ -13,7 +13,8 @@ const homeController = require('../controllers/storeController')
 storeRouter.get("/",homeController.getIndex);
 storeRouter.get("/homes",homeController.getHomes);
 storeRouter.get("/bookings",homeController.getBookings);
-storeRouter.get('/favourites', homeController.getFavouriteList);
+storeRouter.get("/favourites", homeController.getFavouriteList);
+storeRouter.get("/homes/:homeId",homeController.getHomeDetails)
 
 
 module.exports = storeRouter;
