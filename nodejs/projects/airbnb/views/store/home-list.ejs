@@ -19,9 +19,8 @@
                         <p class="mt-1 text-gray-600">Rating: <%= home.rating %></p>
                     </div>
                     <a href="/homes/<%= home.id %>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Details</a>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Book NOW
-                      </button>
+                    <%- include('../partials/favourite.ejs',{home:home}) %>
+                      
                 </div>
             <% }) %>
         </div>
