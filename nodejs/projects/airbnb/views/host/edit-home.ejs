@@ -1,0 +1,85 @@
+<%- include('../partials/head') %>
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <%- include('../partials/header') %>
+  <div class="bg-blue-600 text-white p-4 text-center">
+      <h1 class="text-3xl font-bold"><%= editing ?"Edit":"Register" %> Your Home</h1>
+  </div>
+
+  <!-- Main Content -->
+  <main class="flex items-center justify-center h-screen">
+      <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+          <form action="/host/<%= editing ? "edit-home" : "add-home" %>" method="post">
+            <input 
+            type="hidden"
+            name="id"
+            value="<%= editing ? home.id : "" %>" 
+                   />
+            <div class="mb-4">
+                <label for="houseName" class="block text-gray-700 text-sm font-bold mb-2">House Name</label>
+                <input type="text" 
+                id="houseName" 
+                name="houseName"
+                value="<%= editing ? home.houseName : "" %>" 
+                placeholder="Enter Your House Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            
+            <div class="mb-4">
+                <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Price per Night</label>
+                <input 
+                type="text" 
+                id="price" 
+                name="price" 
+                placeholder="Price per Night"
+                value="<%= editing ? home.price : "" %>"  
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            
+            <div class="mb-4">
+                <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
+                <input 
+                type="text" id="location" name="location" 
+                placeholder="Enter Your Location"
+                value="<%= editing ? home.location : "" %>"  
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            
+            <div class="mb-4">
+                <label for="rating" class="block text-gray-700 text-sm font-bold mb-2">Rating</label>
+                <input 
+                type="text" 
+                id="rating" 
+                name="rating" 
+                placeholder="Enter Your Rating"
+                value="<%= editing ? home.rating : "" %>" 
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            
+            <div class="mb-4">
+                <label for="imageUrl " class="block text-gray-700 text-sm font-bold mb-2">Image URL</label>
+                <input type="text" 
+                id="imageUrl "
+                 name="imageUrl" 
+                 placeholder="Enter Image URL" 
+                 
+                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+            
+              <div class="flex items-center justify-between">
+                  <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><%= editing ? "Update Home" : "Add Home" %></button>
+              </div>
+          </form>
+      </div>
+  </main>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
