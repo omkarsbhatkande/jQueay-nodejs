@@ -45,8 +45,13 @@ exports.getFavouriteList =(req, res, next) => {
       currentPage: "favourite-list",
     })
   );
- 
 };
+
+exports.postAddToFavourite = (req,res,next)=>{
+  console.log("came to add to favtes".req.body);
+  
+}
+
 
 exports.getHomeDetails = (req, res, next) => {
 const homeId = req.params.homeId;
