@@ -3,13 +3,18 @@ const Favourite = require("../models/favourite")
 
 
 exports.getIndex = (req, res, next) => {
-  Home.fetchAll((registeredHomes) =>
+  Home.fetchAll().then(([rows,fields])=>{
+
+  })
+
+
+  (registeredHomes) =>
    res.render("store/index", {
      registeredHomes: registeredHomes,
      pageTitle: "airbnb Home",
      currentPage: "index",
    })
- );
+  
  // console.log(registeredHomes);
 };
 
