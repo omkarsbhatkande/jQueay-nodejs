@@ -1,0 +1,32 @@
+<%- include('../partials/head') %>
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+  <!-- Main Content -->
+  <main class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="text-center p-8 bg-white rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold">Welcome to Airbnb</h1>
+        <h4 class="mt-4 text-gray-600">Here are Our Registered Homes</h4>
+        <div class=" md:grid-cols-3 gap-6 mt-6 flex flex-col">
+            <% registeredHomes.forEach(home => { %>
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200">
+                    <img src="<%= home.imageUrl %>" alt="<%= home.houseName %>" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="mt-4">
+                        <h3 class="text-xl font-semibold"><%= home.houseName %></h3>
+                        <p class="mt-2 text-gray-600">Price: <%= home.price %></p>
+                        <p class="mt-1 text-gray-600">Location: <%= home.location %></p>
+                        <p class="mt-1 text-gray-600">Rating: <%= home.rating %></p>
+                    </div>
+                    <a href="/homes/<%= home.id %>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Details</a>
+                    <%- include('../partials/favourite.ejs',{home:home}) %>
+                      
+                </div>
+            <% }) %>
+        </div>
+        
+    </div>
+</main>
+
+</body>
+</html>

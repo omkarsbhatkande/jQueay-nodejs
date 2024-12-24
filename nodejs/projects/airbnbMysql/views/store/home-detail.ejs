@@ -1,0 +1,31 @@
+<%- include('../partials/head') %>
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+  <!-- Main Content -->
+  <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 mx-w-6xl">
+    
+       <h2 class="text-3xl text-red-500 font-bold text-center mb-6">hello</h2>
+       <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200">
+        <img src="<%= home.imageUrl %>" alt="<%= home.houseName %>" class="w-full h-48 object-cover rounded-t-lg">
+        <div class="mt-4">
+            <h3 class="text-xl font-semibold"><%= home.houseName %></h3>
+            <p class="mt-2 text-gray-600">Price: <%= home.price %></p>
+            <p class="mt-1 text-gray-600">Location: <%= home.location %></p>
+            <p class="mt-1 text-gray-600">Rating: <%= home.rating %></p>
+        </div>
+
+        <div class="mt-5">
+            <%- include('../partials/favourite.ejs') %>
+
+        </div>
+
+
+        
+   
+</main>
+
+
+</body>
+</html>
