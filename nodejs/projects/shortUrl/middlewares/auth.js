@@ -1,6 +1,11 @@
 const {getUser} = require('../service/auth')
 
 
+function checkForAuthentication(req,res,next){
+  const authorizationHeader = req.headers['authorization'];
+}
+
+
 async function restBreakToLoggedinUserOnly(req,res,next){
   //const userId = req.cookies?.uid;
   const userId = req.headers['authorization'];
@@ -19,8 +24,7 @@ async function restBreakToLoggedinUserOnly(req,res,next){
     next();
 }
 
-async function checkAuth(req, res, next) {
-  // Retrieve the Authorization header
+async function checkAuth(req, res, next) {// Retrieve the Authorization header
   const authHeader = req.headers['authorization'];
   
   // Check if the Authorization header is missing or does not start with 'Bearer '
