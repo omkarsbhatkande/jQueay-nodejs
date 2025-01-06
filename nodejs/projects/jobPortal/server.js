@@ -1,21 +1,23 @@
 //imports
 const express = require("express");
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
+const connectDb = require("./config/db");
+const testRoutes = require("./routes/testRoutes")
 
 const PORT = process.env.PORT || 8080;
 
 //dot env config
 dotenv.config()
 
+//mongoDB connection
+connectDb();
+
 // rest object
 const app = express();
 
 
 //routes
-app.get('/',(req,res)=>{
-  res.send("<h1>Welcome to job My portal</h1>")
-  console.log("hello world");
-})
+app.use("/api/v1/test", testRoutes)
 
 //listen
 app.listen(PORT,()=>{
