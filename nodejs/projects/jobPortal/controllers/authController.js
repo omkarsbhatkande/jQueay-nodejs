@@ -1,36 +1,41 @@
 const userModel = require("../models/userModel");
 
-exports.registerController = async (req, res) => {
+exports.registerController = async (req, res, next) => {
   try {
     const { name, lastname, email, password } = req.body;
     // Validate input
     if (!name) {
-      return res
-        .status(400)
-        .send({ success: false, message: "Please provide Name" });
+      next("Please Provide Name");
+      // return res
+      //   .status(400)
+      //   .send({ success: false, message: "Please provide Name" });
     }
     if (!lastname) {
-      return res
-        .status(400)
-        .send({ success: false, message: "Please provide Last Name" });
+      next("Please Provide Last Name");
+      // return res
+      //   .status(400)
+      //   .send({ success: false, message: "Please provide Last Name" });
     }
     if (!email) {
-      return res
-        .status(400)
-        .send({ success: false, message: "Please provide Email" });
+      next("Email is Required");
+      // return res
+      //   .status(400)
+      //   .send({ success: false, message: "Please provide Email" });
     }
     if (!password) {
-      return res
-        .status(400)
-        .send({ success: false, message: "Please provide Password" });
+      next("Password is Required");
+      // return res
+      //   .status(400)
+      //   .send({ success: false, message: "Please provide Password" });
     }
 
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
-      return res.status(400).send({
-        success: false,
-        message: "Email already registered, please log in",
-      });
+      next("Email already registered, please log in");
+      // return res.status(400).send({
+      //   success: false,
+      //   message: "Email already registered, please log in",
+      // });
     }
 
     const user = await userModel.create({ name, lastname, email, password });
@@ -39,11 +44,12 @@ exports.registerController = async (req, res) => {
       message: "User created successfully",
     });
   } catch (error) {
-    console.log(error);
-    res.status(400).send({
-      message: "Error in Register controller",
-      success: false,
-      error,
-    });
+    next(error);
+    // console.log(error);
+    // res.status(400).send({
+    //   message: "Error in Register controller",
+    //   success: false,
+    //   error,
+    // });
   }
 };

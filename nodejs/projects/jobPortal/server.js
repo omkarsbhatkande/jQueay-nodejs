@@ -9,6 +9,7 @@ const connectDb = require("./config/db");
 //routes import
 const testRoutes = require("./routes/testRoutes");
 const authRoutes = require("./routes/authRoutes");
+const errorMiddleware = require("./middlewares/errorMiddleware");
 
 const PORT = process.env.PORT || 8080;
 
@@ -29,6 +30,9 @@ app.use(morgan("dev"));
 //routes
 app.use("/api/v1/test", testRoutes);
 app.use("/api/v1/auth", authRoutes);
+
+//validation middlewares
+app.use(errorMiddleware);
 
 //listen
 app.listen(PORT, () => {
