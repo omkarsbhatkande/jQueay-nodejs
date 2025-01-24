@@ -3,6 +3,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const morgan = require("morgan");
+const express_asyc_error = require("express-async-errors");
 
 //files
 const connectDb = require("./config/db");

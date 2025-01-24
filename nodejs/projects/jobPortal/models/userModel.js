@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator"); // Importing the validator library
-
+const bcrypt = require("bcryptjs");
 // Schema
 const userSchema = new mongoose.Schema(
   {
@@ -29,5 +29,11 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+//middlewares
+userSchema.pre("save", async function () {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
 
 module.exports = mongoose.model("User", userSchema);
