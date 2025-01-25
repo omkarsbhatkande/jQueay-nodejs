@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator"); // Importing the validator library
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 // Schema
 const userSchema = new mongoose.Schema(
   {
@@ -21,6 +22,8 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
+      minlength: [6, "Password length should be greater than 6 character"],
+      select: true,
     },
     location: {
       type: String,
@@ -35,5 +38,12 @@ userSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
+
+//JSON WEBTOKEN
+userSchema.methods.createJWT = function () {
+  return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
+};
 
 module.exports = mongoose.model("User", userSchema);
