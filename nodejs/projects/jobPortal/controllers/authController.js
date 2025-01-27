@@ -55,26 +55,39 @@ exports.registerController = async (req, res, next) => {
 
 exports.loginController = async (req, res, next) => {
   const { email, password } = req.body;
-  //validation
+
+  // Validation
   if (!email || !password) {
-    next("Please provide all Filed");
+    return next("Please provide all required fields."); // Improved error message
   }
-  //find user by email
-  const user = await userModel.findOne({ email }).select("+password");
-  if (!user) {
-    next("Invalid UserName or Password");
+
+  try {
+    // Find user by email
+    const user = await userModel.findOne({ email }).select("+password");
+    if (!user) {
+      return next("Invalid username or password."); // Consistent error message
+    }
+
+    // Compare password
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      return next("Invalid username or password.");
+    }
+
+    // Remove password from response
+    user.password = undefined;
+
+    // Generate token
+    const token = user.createJWT();
+
+    // Send response
+    res.status(200).json({
+      success: true,
+      message: "Login successful.",
+      user,
+      token,
+    });
+  } catch (error) {
+    next(error.message || "An error occurred during login."); // Catch any unexpected errors
   }
-  //compare password
-  const isMatch = await user.comparePassword(password);
-  if (!isMatch) {
-    next("Invalid Username or Password");
-  }
-  user.password = undefined;
-  const token = user.createJWT();
-  res.status(200).json({
-    success: true,
-    message: "Login successfully",
-    user,
-    token,
-  });
 };
