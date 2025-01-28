@@ -12,6 +12,7 @@ const testRoutes = require("./routes/testRoutes");
 const authRoutes = require("./routes/authRoutes");
 const errorMiddleware = require("./middlewares/errorMiddleware");
 const userRoutes = require("./routes/userRoutes");
+const jobRoutes = require("./routes/jobRoutes");
 
 const PORT = process.env.PORT || 8080;
 
@@ -33,6 +34,7 @@ app.use(morgan("dev"));
 app.use("/api/v1/test", testRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/job", jobRoutes);
 
 //validation middlewares
 app.use(errorMiddleware);
